@@ -4,10 +4,11 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.SqlServer.Server;
 
 namespace ACM.BL
 {
-    public class Customer
+    public class Customer : EntityBase
     {
         public Customer(): this (0)
         {
@@ -49,6 +50,8 @@ namespace ACM.BL
 
         public static int InstanceCount { get; set; }
 
+        public string Log() => $"{CustomerId}: {FullName} Email: {EmailAddress} Status: {EntityState.ToString()}";
+
         public override string ToString()
         {
             return FullName;
@@ -58,7 +61,7 @@ namespace ACM.BL
         /// Validates the customer data.
         /// </summary>
         /// <returns></returns>
-        public bool Validate()
+        public override bool Validate()
         {
             var isValid = true;
 
