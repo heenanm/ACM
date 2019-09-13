@@ -4,11 +4,12 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Acme.Common;
 using Microsoft.SqlServer.Server;
 
 namespace ACM.BL
 {
-    public class Customer : EntityBase
+    public class Customer : EntityBase, ILoggable 
     {
         public Customer(): this (0)
         {

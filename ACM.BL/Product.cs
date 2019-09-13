@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,8 @@ using Acme.Common;
 
 namespace ACM.BL
 {
-    public class Product : EntityBase
+    [DebuggerDisplay("Name = {" + nameof(ProductName) + "}")]
+    public class Product : EntityBase, ILoggable
     {
         public Product()
         {

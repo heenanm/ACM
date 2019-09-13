@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Acme.Common;
 
 namespace ACM.BL
 {
-    public class Order
+    public class Order : EntityBase, ILoggable
     {
         public Order() : this(0)
         {
@@ -30,11 +31,13 @@ namespace ACM.BL
             return $"{OrderDate.Value.Date} ({OrderId})";
         }
 
+        public string Log() => $"{OrderId}: Date: {this.OrderDate.Value.Date} Status: {this.EntityState.ToString()}";
+
         /// <summary>
         /// Validates the order Data.
         /// </summary>
         /// <returns></returns>
-        public bool Validate()
+        public override bool Validate()
         {
             var isValid = true;
 
